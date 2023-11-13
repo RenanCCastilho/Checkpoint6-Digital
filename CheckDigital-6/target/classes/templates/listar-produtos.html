@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="#{label.productList}">Product List</title>
+</head>
+
+<body>
+	<h1 th:text="#{label.productList}">Product List</h1>
+	<div>
+		<a th:href="@{/produtos/novo}" th:text="#{label.addNewProduct}">Add New Product</a>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th th:text="#{label.id}">ID</th>
+				<th th:text="#{label.name}">Name</th>
+				<th th:text="#{label.description}">Description</th>
+				<th th:text="#{label.price}">Price</th>
+				<th th:text="#{label.dateRegistration}">Date of registration</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="produto : ${produtos}">
+				<td th:text="${produto.id}">ID</td>
+				<td th:text="${produto.nome}">Name</td>
+				<td th:text="${produto.descricao}">Description</td>
+				<td th:text="${produto.preco}">Price</td>
+				<td th:text="${produto.dataCadastro}">Date of registration</td>
+				<td>
+					<a th:href="@{/produtos/editar/{id}(id=${produto.id})}" th:text="#{label.edit}">Edit</a>
+					<a th:href="@{/produtos/deletar/{id}(id=${produto.id})}" th:text="#{label.delete}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

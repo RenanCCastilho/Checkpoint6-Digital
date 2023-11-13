@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${produto.id} ? #{label.editproduct} : #{label.addProduct}">Add/Edit Product</title>
+</head>
+
+<body>
+	<div>
+		<a href="?lang=en">English</a> |
+		<a href="?lang=pt_BR">Português</a>
+	</div>
+
+	<h1 th:text="${produto.id} ? #{label.editProduct} : #{label.addProduct}">Add/Edit Product</h1>
+	<form th:action="@{/produtos}" th:object="${produto}" method="post">
+		<div>
+			<label for="nome" th:text="#{label.name}">Name</label>
+			<input type="text" id="nome" th:field="*{nome}" />
+		</div>
+		<div>
+			<label for="descricao" th:text="#{label.description}">Description</label>
+			<input type="text" id="descricao" th:field="*{descricao}" />
+		</div>
+		<div>
+			<label for="preco" th:text="#{label.price}">Price</label>
+			<input type="number" id="preco" th:field="*{preco}" />
+		</div>
+		<div>
+			<label for="dataCadastro" th:text="#{label.dateRegistration}">Date of registration</label>
+			<input type="text" id="dataCadastro" th:field="*{dataCadastro}" />
+		</div>
+		<div>
+			<button type="submit" th:text="#{label.save}">Save</button>
+			<a th:href="@{/produtos}" th:text="#{label.cancel}">Cancel</a>
+		</div>
+	</form>
+</body>
+
+</html>
